@@ -1,6 +1,3 @@
-import { Description } from "@/utils/types";
-import React from "react";
-
 import "./style.css";
 
 const Description = (props: Description) => {
