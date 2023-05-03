@@ -33,7 +33,7 @@ const DetailsForm = (props: DetailsForm) => {
       className={`flex flex-col space-y-5 w-5/6 fixed justify-between items-start z-50 top-28 left-0 right-0 m-auto bg-background p-5 rounded-sm shadow-xl space-x-2 max-h-96 overflow-auto border border-tertiary
       ${styles.example}`}
     >
-      <div className="flex justify-between w-full">
+      <div className="flex justify-between w-full h-10 border border-primary sticky top-0 bg-background">
         <TypographyLarge text={task?.title} />
 
         <button
