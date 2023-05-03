@@ -1,10 +1,15 @@
 "use client";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import Icon from "../icon";
-import { addTask, getTask, updateTask } from "@/lib/tasks";
+import { getTask, updateTask } from "@/lib/tasks";
 
 import styles from "./style.module.css";
 import { useRouter } from "next/navigation";
+import { Textarea } from "../ui/TextArea";
+import { Label } from "../ui/Label";
+import { Input } from "../ui/Input";
+import { Checkbox } from "../ui/Checkbox";
+import { Button } from "../ui/Button";
 
 interface Task {
   title: string;
@@ -21,16 +26,6 @@ const FormModal = (props: FormModal) => {
     desc: "",
     isCompleted: false,
   });
-
-  const handleSubmit = async () => {
-    if (!task.title || !task.desc) {
-      alert("Please provide all the required values!");
-      return;
-    }
-    await addTask(task);
-    handleClose();
-    router.refresh();
-  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -66,9 +61,9 @@ const FormModal = (props: FormModal) => {
   };
 
   return (
-    <div className="flex fixed justify-between flex-col items-start z-50 top-28 left-0 right-0 m-auto bg-primary p-5 rounded-sm shadow-xl w-96 space-y-2">
-      <div className="flex w-full justify-between">
-        {id ? "Update" : "Add"} Task
+    <div className="flex fixed justify-between flex-col items-start z-50 top-28 left-0 right-0 m-auto bg-card text-primary p-5 rounded-sm shadow-xl w-5/6 space-y-2">
+      <div className="flex w-full justify-between text-primary">
+        Update Task
         <button
           data-modal-hide="defaultModal"
           type="button"
@@ -79,34 +74,32 @@ const FormModal = (props: FormModal) => {
       </div>
 
       <div className="flex flex-col space-y-5 ">
-        <div className="flex flex-col text-left">
-          <label>Task Name</label>
-          <div className="border-secondary border-solid">
-            <input
-              name="title"
-              type="text"
-              className="border border-tertiary rounded-sm drop-shadow-xl p-1 example"
-              onChange={handleChange}
-              value={task.title}
-              required
-            />
-          </div>
+        <div className="flex flex-col text-left space-y-1">
+          <Label htmlFor="title">Task Name</Label>
+          <Input
+            name="title"
+            type="text"
+            className="border border-t-0 border-l-0 border-r-0 border-b-foreground bg-background  rounded-sm p-1"
+            onChange={handleChange}
+            value={task.title}
+            required
+          />
         </div>
-        <div className="flex flex-col text-left">
-          <label>Description</label>
-          <div className="border-secondary border-solid">
-            <textarea
-              name="desc"
-              className={`border border-tertiary rounded-sm drop-shadow-xl p-1 w-full h-32 ${styles.example}`}
-              onChange={handleChange}
-              value={task.desc}
-              required
-            />
-          </div>
+
+        <div className="flex flex-col text-left space-y-1">
+          <Label htmlFor="desc">Description</Label>
+          <Textarea
+            name="desc"
+            className={`border border-t-0 border-l-0 border-r-0 border-b-foreground bg-background rounded-sm drop-shadow-xl p-1 w-full h-32 ${styles.example}`}
+            onChange={handleChange}
+            value={task.desc}
+            required
+          />
         </div>
+
         {id && (
-          <div className="flex space-x-2">
-            <label>Completed ?</label>
+          <div className="flex item-center space-x-2">
+            <Label htmlFor="isCompleted">Completed ?</Label>
             <input
               type="checkbox"
               name="isCompleted"
@@ -117,13 +110,13 @@ const FormModal = (props: FormModal) => {
         )}
       </div>
 
-      <button
+      <Button
         type="submit"
-        className="bg-secondary text-primary w-1/4 rounded-sm py-0.5 drop-shadow-xl mx-auto"
-        onClick={id ? handleUpdate : handleSubmit}
+        className="bg-foreground drop-shadow-2xl mx-auto"
+        onClick={handleUpdate}
       >
-        {id ? "Update" : "Add"}
-      </button>
+        Update
+      </Button>
     </div>
   );
 };

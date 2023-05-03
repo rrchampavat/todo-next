@@ -42,8 +42,24 @@ interface Button {
   className?: string;
 }
 
-interface AddTodo {
-  handleClose: () => void;
-  handleOpen: () => void;
-  open: boolean;
+interface TextInput {
+  name: string;
+  label?: string;
+  labelClass?: string;
+  className?: string;
+  placeHolder?: string;
+  value?: any;
+  disabled?: boolean;
+  required?: boolean;
+  handleChange?: () => void;
+}
+
+interface TextArea {
+  name: string;
+  className?: string;
+  placeHolder?: string;
+  disabled?: boolean;
+  value?: any;
+  required?: boolean;
+  handleChange?: () => void;
 }

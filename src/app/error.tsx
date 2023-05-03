@@ -1,7 +1,5 @@
 "use client"; // Error components must be Client components
 
-import { useEffect } from "react";
-
 export default function Error({
   error,
   reset,
@@ -9,11 +7,6 @@ export default function Error({
   error: Error;
   reset: () => void;
 }) {
-  useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
-  }, [error]);
-
   return (
     <div className="flex flex-col mt-20 w-1/2 left-0 right-0 m-auto space-y-5">
       <h2 className="text-center">{error.message}</h2>

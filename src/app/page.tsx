@@ -6,7 +6,7 @@ import DetailsForm from "@/components/modal/DetailsForm";
 import FormModal from "@/components/modal/FormModal";
 import { deleteTask, getTasks } from "@/lib/tasks";
 import { MouseEvent, useEffect, useState } from "react";
-import AddTodo from "./AddTodo";
+import AddBtn from "./AddBtn";
 
 export default function Home() {
   const [data, setData] = useState<Task[]>([]);
@@ -54,7 +54,7 @@ export default function Home() {
 
   return (
     <main>
-      <div className="grid grid-cols-4 place-content-between justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-4 place-content-between justify-between">
         {data?.map((task, id) => (
           <Card
             key={id}
@@ -80,11 +80,7 @@ export default function Home() {
         ))}
       </div>
 
-      <AddTodo
-        open={openAddModal}
-        handleClose={() => setOpenAddModal(false)}
-        handleOpen={() => setOpenAddModal(true)}
-      />
+      <AddBtn />
 
       {openTask && (
         <DetailsForm id={taskID} handleClose={() => setOpenTask(false)} />

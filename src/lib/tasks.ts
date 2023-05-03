@@ -22,13 +22,13 @@ export async function getTasks() {
 
 export const addTask = async (props: any) => {
   try {
-    const { title, desc } = props;
+    const { title, description } = props;
     const res = await supabase
       .from("tasks")
       .insert([
         {
           title: title,
-          description: desc,
+          description: description,
         },
       ])
       .single();

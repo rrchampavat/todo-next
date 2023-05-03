@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Icon from "../icon";
 import { getTask } from "@/lib/tasks";
 import styles from "./style.module.css";
+import { TypographyLarge, TypographyP } from "../ui/Typography";
 
 const initialState = {
   id: null,
@@ -29,21 +30,22 @@ const DetailsForm = (props: DetailsForm) => {
 
   return (
     <div
-      className={`flex fixed justify-between items-start z-50 top-28 left-0 right-0 m-auto bg-primary p-5 rounded-sm shadow-xl w-96 space-x-2 max-h-96 overflow-auto ${styles.example}`}
+      className={`flex flex-col space-y-5 w-5/6 fixed justify-between items-start z-50 top-28 left-0 right-0 m-auto bg-background p-5 rounded-sm shadow-xl space-x-2 max-h-96 overflow-auto border border-tertiary
+      ${styles.example}`}
     >
-      <div className="flex flex-col space-y-5 w-full">
-        <div className="flex justify-between">
-          <span>{task?.title}</span>
-          <button
-            data-modal-hide="defaultModal"
-            type="button"
-            onClick={handleClose}
-          >
-            <Icon name="XCircle" color="red" />
-          </button>
-        </div>
-        <p className="max-w-xs">{task?.description}</p>
+      <div className="flex justify-between w-full">
+        <TypographyLarge text={task?.title} />
+
+        <button
+          data-modal-hide="defaultModal"
+          type="button"
+          onClick={handleClose}
+        >
+          <Icon name="XCircle" color="red" />
+        </button>
       </div>
+
+      <TypographyP text={task?.description} />
     </div>
   );
 };
