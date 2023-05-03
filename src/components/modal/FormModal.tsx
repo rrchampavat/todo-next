@@ -1,15 +1,15 @@
 "use client";
 import React, { ChangeEvent, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 import Icon from "../icon";
 import { getTask, updateTask } from "@/lib/tasks";
-
 import styles from "./style.module.css";
-import { useRouter } from "next/navigation";
 import { Textarea } from "../ui/TextArea";
 import { Label } from "../ui/Label";
 import { Input } from "../ui/Input";
-import { Checkbox } from "../ui/Checkbox";
 import { Button } from "../ui/Button";
+import { TypographyH4 } from "../ui/Typography";
 
 interface Task {
   title: string;
@@ -61,16 +61,16 @@ const FormModal = (props: FormModal) => {
   };
 
   return (
-    <div className="flex fixed justify-between flex-col items-start z-50 top-28 left-0 right-0 m-auto bg-card text-primary p-5 rounded-sm shadow-xl w-5/6 space-y-2">
-      <div className="flex w-full justify-between text-primary">
-        Update Task
-        <button
-          data-modal-hide="defaultModal"
+    <div className="flex fixed justify-between flex-col items-start z-50 top-28 left-0 right-0 m-auto bg-background border border-primary p-5 rounded-sm shadow-xl w-5/6 space-y-2">
+      <div className="flex w-full justify-between">
+        <TypographyH4 text="Update Task" />
+        <Button
           type="button"
+          className="bg-background drop-shadow-none  p-0 h-auto rounded-full"
           onClick={handleClose}
         >
           <Icon name="XCircle" color="red" />
-        </button>
+        </Button>
       </div>
 
       <div className="flex flex-col space-y-5 ">
@@ -90,7 +90,7 @@ const FormModal = (props: FormModal) => {
           <Label htmlFor="desc">Description</Label>
           <Textarea
             name="desc"
-            className={`border border-t-0 border-l-0 border-r-0 border-b-foreground bg-background rounded-sm drop-shadow-xl p-1 w-full h-32 ${styles.example}`}
+            className={`border border-t-0 border-l-0 border-r-0 border-b-foreground bg-background rounded-sm  p-1 w-full h-32 ${styles.example}`}
             onChange={handleChange}
             value={task.desc}
             required

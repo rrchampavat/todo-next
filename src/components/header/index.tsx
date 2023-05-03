@@ -3,7 +3,7 @@ import AppName from "./components/AppName";
 
 const Header = () => {
   return (
-    <div className="h-20 bg-border flex justify-center shadow-xl items-center px-10">
+    <div className="h-16 bg-border flex justify-center shadow-xl items-center px-10 sticky top-0">
       <AppName />
     </div>
   );
