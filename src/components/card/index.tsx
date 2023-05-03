@@ -1,6 +1,7 @@
 import React from "react";
 import Icon from "../icon";
 import styles from "./style.module.css";
+import { TypographyH4, TypographyP } from "../ui/Typography";
 
 const Card = (props: Card) => {
   const { task, buttons, handleClick } = props;
@@ -9,12 +10,12 @@ const Card = (props: Card) => {
 
   return (
     <div
-      className="shadow-lg hover:shadow-2xl hover:scale-105 border p-5 m-5 rounded-md ease-in duration-200 max-h-62"
+      className="shadow-lg hover:shadow-2xl hover:scale-105 bg-card p-5 my-2 md:m-2  rounded-md ease-in duration-200 max-h-62"
       onClick={handleClick}
     >
       <div className="flex justify-between">
-        <div className="flex  items-center">
-          {title}
+        <div className="flex items-center">
+          <TypographyH4 text={title} />
           <Icon
             name="CheckCircle"
             color={isCompleted ? "green" : "red"}
@@ -22,6 +23,7 @@ const Card = (props: Card) => {
             className="ml-2"
           />
         </div>
+
         <button className="flex space-x-2" type="button">
           {buttons?.map((icon, id) => (
             <Icon
@@ -36,9 +38,7 @@ const Card = (props: Card) => {
         </button>
       </div>
 
-      <div className={`mt-5 description ${styles.description}`}>
-        {description}
-      </div>
+      <TypographyP text={description} className={styles.description} />
     </div>
   );
 };
