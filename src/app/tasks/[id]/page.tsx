@@ -8,7 +8,7 @@ import { notFound } from "next/navigation";
 import Icon from "@/components/icon";
 
 const page = async ({ params }: { params: { id: string } }) => {
-  const data = await fetch(`http://localhost:3000/api/tasks/${params.id}`, {
+  const data = await fetch(`${process.env.API_URL}/tasks/${params.id}`, {
     // method: "GET",
     // cache: "no-store",
   });
