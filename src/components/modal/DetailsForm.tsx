@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useEffect, useState } from "react";
 import Icon from "../icon";
 import { getTask } from "@/lib/tasks";
@@ -19,14 +17,6 @@ const DetailsForm = (props: DetailsForm) => {
   const { handleClose, id } = props;
 
   const [task, setTask] = useState<Task>(initialState);
-
-  useEffect(() => {
-    (async () => {
-      const data = await getTask(id!);
-      // @ts-expect-error
-      setTask(data);
-    })();
-  }, [id]);
 
   return (
     <div

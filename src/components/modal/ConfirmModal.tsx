@@ -6,7 +6,7 @@ const ConfirmModal = (props: ConfirmModal) => {
 
   return (
     <div
-      className={`flex fixed justify-between items-start z-50 top-28 left-0 right-0 m-auto bg-foreground p-5 rounded-sm shadow-xl w-96 space-x-2 max-h-96 overflow-auto`}
+      className={`flex fixed justify-between items-start z-50 top-28 left-0 right-0 m-auto bg-foreground p-5 rounded-sm shadow-xl w-4/5 space-x-2 max-h-96 overflow-auto`}
     >
       <div className="flex flex-col space-y-5 w-full">
         <div className="flex justify-between w-full">

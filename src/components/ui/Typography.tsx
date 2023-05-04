@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 interface Typography {
-  text: string;
+  text: any;
   className?: string;
 }
 
@@ -29,3 +29,8 @@ export const TypographyP: FC<Typography> = (props) => {
     </p>
   );
 };
+
+export function TypographyMuted(props: Typography) {
+  const { text, className } = props;
+  return <p className={`text-sm text-muted-foreground ${className}`}>{text}</p>;
+}
