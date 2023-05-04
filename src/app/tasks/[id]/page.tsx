@@ -7,12 +7,10 @@ import styles from "../style.module.css";
 import { notFound } from "next/navigation";
 import Icon from "@/components/icon";
 
-export const revalidate = 10;
-
 const page = async ({ params }: { params: { id: string } }) => {
   const data = await fetch(`http://localhost:3000/api/tasks/${params.id}`, {
-    method: "GET",
-    cache: "no-store",
+    // method: "GET",
+    // cache: "no-store",
   });
 
   const task: Task = await data.json();

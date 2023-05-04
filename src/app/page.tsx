@@ -2,7 +2,7 @@ import Card from "@/components/card";
 
 export default async function Home() {
   const res = await fetch("http://localhost:3000/api/tasks", {
-    cache: "no-store",
+    // cache: "no-store",
   });
   const tasks: Task[] = await res.json();
 
