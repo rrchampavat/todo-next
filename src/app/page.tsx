@@ -1,10 +1,8 @@
 import Card from "@/components/card";
 
 export default async function Home() {
-  const res = await fetch("http://localhost:3000/api/tasks", {
-    // cache: "no-store",
-  });
-  const tasks: Task[] = await res.json();
+  const res = await fetch(`${process.env.API_URL}/tasks`);
+  const tasks: Task[] = await res?.json();
 
   return (
     <main>
