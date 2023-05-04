@@ -12,7 +12,7 @@ const AddBtn = () => {
     <Button
       className="fixed bottom-0 right-0 mb-5 text-secondary bg-primary px-2 py-2 mr-5 rounded-full shadow-xl hover:scale-105 duration-300"
       type="button"
-      onClick={() => router.push("/add-task")}
+      onClick={() => router.push("/tasks/add")}
     >
       <Icon name="Plus" className="" color="#F0F5F9" />
     </Button>

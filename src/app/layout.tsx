@@ -1,6 +1,7 @@
 import Header from "@/components/header";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import AddBtn from "./AddBtn";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Header />
         <div className="mt-5 px-5">{children}</div>
+        <AddBtn />
       </body>
     </html>
   );

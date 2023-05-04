@@ -1,41 +1,43 @@
-import React from "react";
+"use client";
+
 import Icon from "../icon";
 import styles from "./style.module.css";
-import { TypographyH4, TypographyP } from "../ui/Typography";
+import { TypographyH4, TypographyMuted, TypographyP } from "../ui/Typography";
+import { useRouter } from "next/navigation";
 
 const Card = (props: Card) => {
-  const { task, buttons, handleClick } = props;
+  const { task } = props;
 
-  const { title, description, isCompleted, created_at } = task;
+  const { id, title, description, isCompleted, created_at } = task;
+
+  const router = useRouter();
 
   return (
     <div
       className="shadow-lg hover:shadow-2xl hover:scale-105 bg-card p-5 my-2 md:m-2  rounded-md ease-in duration-200 max-h-62"
-      onClick={handleClick}
+      onClick={() => router.push(`/tasks/${id}`)}
     >
       <div className="flex justify-between">
-        <div className="flex items-center">
-          <TypographyH4 text={title} />
+        <div className="flex items-top space-x-2">
+          <div className="flex flex-col space-y-0">
+            <TypographyH4 text={title} />
+            <TypographyMuted
+              text={new Intl.DateTimeFormat("default", {
+                month: "long",
+                day: "2-digit",
+              }).format(new Date(created_at!))}
+            />
+          </div>
+
           <Icon
             name="CheckCircle"
             color={isCompleted ? "green" : "red"}
             size={18}
-            className="ml-2"
+            className="mt-1"
           />
         </div>
 
-        <button className="flex space-x-2" type="button">
-          {buttons?.map((icon, id) => (
-            <Icon
-              key={id}
-              name={icon?.name}
-              size={icon?.size}
-              color={icon?.color}
-              strokeWidth={icon?.strokeWidth}
-              handleClick={icon?.handleClick}
-            />
-          ))}
-        </button>
+        <Icon name="Pencil" />
       </div>
 
       <TypographyP text={description} className={styles.description} />

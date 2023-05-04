@@ -9,8 +9,6 @@ interface Task {
 
 interface Card {
   task: Task;
-  buttons: Button[];
-  handleClick?: () => void;
 }
 
 interface Description {
