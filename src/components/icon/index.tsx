@@ -14,8 +14,13 @@ const Icon = (props: Button) => {
   const LucideIcon = icons[name];
 
   return (
-    <div className={className} onClick={handleClick}>
-      <LucideIcon color={color} size={size} strokeWidth={strokeWidth} />
+    <div onClick={handleClick}>
+      <LucideIcon
+        color={color}
+        size={size}
+        strokeWidth={strokeWidth}
+        className={className}
+      />
     </div>
   );
 };
