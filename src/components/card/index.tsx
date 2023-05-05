@@ -1,7 +1,7 @@
 "use client";
 
 import Icon from "../icon";
-import styles from "./style.module.css";
+// import styles from "./style.module.css";
 import { TypographyH4, TypographyMuted, TypographyP } from "../ui/Typography";
 import { useRouter } from "next/navigation";
 
@@ -14,7 +14,7 @@ const Card = (props: Card) => {
 
   return (
     <div
-      className="shadow-lg hover:shadow-2xl hover:scale-105 bg-card p-5 my-2 md:m-2  rounded-md ease-in duration-200 max-h-62"
+      className="shadow-lg hover:shadow-2xl hover:scale-105 bg-card p-5 my-2 md:m-4 rounded-md ease-in duration-200 max-h-62"
       onClick={() => router.push(`/tasks/${id}`)}
     >
       <div className="flex justify-between">
@@ -40,7 +40,7 @@ const Card = (props: Card) => {
         <Icon name="Pencil" />
       </div>
 
-      <TypographyP text={description} className={styles.description} />
+      <TypographyP text={description} className="noscrollbar" />
     </div>
   );
 };

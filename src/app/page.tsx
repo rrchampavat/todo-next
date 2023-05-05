@@ -1,4 +1,4 @@
-import Card from "@/components/card";
+import Accordion from "@/components/ui/Accordian/Accordian";
 
 export default async function Home() {
   const res = await fetch(`${process.env.API_URL}/tasks`);
@@ -8,7 +8,21 @@ export default async function Home() {
     <main>
       <div className="grid grid-cols-1 md:grid-cols-4 place-content-between justify-between">
         {tasks?.map((task, id) => (
-          <Card key={id} task={task} />
+          <Accordion
+            key={id}
+            value={task?.id}
+            title={task?.title}
+            description={task?.description}
+            date={new Intl.DateTimeFormat("default", {
+              month: "short",
+              day: "2-digit",
+            }).format(new Date(task?.created_at!))}
+            collapsible
+            btnTxt="Edit"
+            id={task?.id}
+            icon="CheckCircle"
+            iconClr={task?.isCompleted ? "green" : "red"}
+          />
         ))}
       </div>
     </main>

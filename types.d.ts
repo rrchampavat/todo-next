@@ -1,28 +1,14 @@
 interface Task {
-  id: number | null;
+  id: number;
   title: string;
   description: string;
   isCompleted: boolean;
-  created_at: Date | null;
-  updated_at: Date | null;
+  created_at: Date;
+  updated_at: Date;
 }
 
 interface Card {
   task: Task;
-}
-
-interface Description {
-  desc: string;
-}
-
-interface FormModal {
-  id?: number;
-  handleClose: () => void;
-}
-
-interface DetailsForm {
-  id: number | null;
-  handleClose: () => void;
 }
 
 interface ConfirmModal {
@@ -40,24 +26,22 @@ interface Button {
   className?: string;
 }
 
-interface TextInput {
-  name: string;
-  label?: string;
-  labelClass?: string;
-  className?: string;
-  placeHolder?: string;
-  value?: any;
-  disabled?: boolean;
-  required?: boolean;
-  handleChange?: () => void;
+interface Accordion {
+  value: string | number | null;
+  title: string;
+  description: string;
+  type?: "single" | "multiple";
+  collapsible?: boolean;
+  date?: Date | string;
+  btnTxt?: string;
+  handleClick?: () => void;
+  id?: string | number | null;
+  icon?: string;
+  iconClr?: string;
 }
 
-interface TextArea {
-  name: string;
-  className?: string;
-  placeHolder?: string;
-  disabled?: boolean;
-  value?: any;
-  required?: boolean;
-  handleChange?: () => void;
+interface AlertMsg {
+  description: string;
+  title?: string;
+  variant?: "destructive" | "default";
 }
