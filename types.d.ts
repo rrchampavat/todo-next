@@ -45,3 +45,7 @@ interface AlertMsg {
   title?: string;
   variant?: "destructive" | "default";
 }
+
+interface Description {
+  desc: string;
+}
