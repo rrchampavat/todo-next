@@ -1,12 +1,10 @@
 import { notFound } from "next/navigation";
 import Form from "./Form";
+import { getSingle } from "@/lib/helper";
 
-const page = async ({ params }: { params: { id: string } }) => {
-  const data = await fetch(`${process.env.API_URL}/tasks/${params.id}`, {
-    method: "GET",
-  });
+const page = async ({ params: { id } }: { params: { id: string } }) => {
+  const task: Task = await getSingle({ table: "tasks", id: id });
 
-  const task: Task = await data.json();
   if (!task) {
     notFound();
   }

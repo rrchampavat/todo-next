@@ -1,4 +1,3 @@
-export const GET = (req: Request) => {
-  console.log("method", req.method);
+export const GET = (_req: Request) => {
   return new Response("Hello, there!");
 };
