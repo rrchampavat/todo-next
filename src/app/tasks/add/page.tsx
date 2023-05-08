@@ -6,19 +6,14 @@ import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/TextArea";
 import { TypographyH4, TypographyLarge } from "@/components/ui/Typography";
 import { addTask } from "@/lib/tasks";
-import { AlertCircle, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
-
-interface Task {
-  title: string;
-  description: string;
-}
 
 const Add = () => {
   const router = useRouter();
 
-  const [task, setTask] = useState<Task>({ title: "", description: "" });
+  const [task, setTask] = useState<TaskForm>({ title: "", description: "" });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showError, setShowError] = useState<boolean>(false);
 

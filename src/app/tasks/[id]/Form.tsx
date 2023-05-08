@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/TextArea";
 import { TypographyH4, TypographyLarge } from "@/components/ui/Typography";
+import { updateDataClient } from "@/lib/helper";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useState } from "react";
@@ -23,12 +24,10 @@ const Form = ({ data }: { data: Task }) => {
   const handleSubmit = async () => {
     setIsLoading(true);
 
-    const data = await fetch(`/api/tasks/${task?.id}`, {
-      method: "PUT",
-      body: JSON.stringify(task),
-      headers: {
-        "Content-Type": "application/json",
-      },
+    const data = await updateDataClient({
+      body: task,
+      id: task?.id,
+      table: "tasks",
     });
 
     setIsLoading(false);
@@ -58,7 +57,7 @@ const Form = ({ data }: { data: Task }) => {
         <Textarea
           name="description"
           value={task?.description}
-          className="w-full border border-b-primary border-t-0 border-l-0 border-r-0 bg-input"
+          className="w-full border border-b-primary border-t-0 border-l-0 border-r-0 bg-input h-40 overflow-auto noscrollbar"
           required
           onChange={handleChange}
         />

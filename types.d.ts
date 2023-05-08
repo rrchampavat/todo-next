@@ -49,3 +49,34 @@ interface AlertMsg {
 interface Description {
   desc: string;
 }
+
+interface Card {
+  title: string;
+  content: string;
+  id: number;
+  description?: string | number;
+  footer?: string;
+  btnTxt?: string;
+  btnType?: "submit" | "button";
+  icon?: string;
+  icnClr?: string;
+  icnSize?: number;
+  handleClick?: (value?: any) => void;
+  task?: Task;
+}
+
+interface TaskForm {
+  title: string;
+  description: string;
+}
+
+interface GetByIdPayload {
+  id: number | string;
+  table: string;
+}
+
+interface UpdatePayload {
+  body: any;
+  id: number | string;
+  table: string;
+}

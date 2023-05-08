@@ -1,27 +1,28 @@
-import Accordion from "@/components/ui/Accordian/Accordian";
+import Card from "@/components/ui/Card/Card";
+import { getAll } from "@/lib/helper";
+
+// export const revalidate = 0;
 
 export default async function Home() {
-  const res = await fetch(`${process.env.API_URL}/tasks`);
-  const tasks: Task[] = await res?.json();
+  const tasks: Task[] = await getAll("tasks");
 
   return (
     <main>
-      <div className="grid grid-cols-1 md:grid-cols-4 place-content-between justify-between">
-        {tasks?.map((task, id) => (
-          <Accordion
-            key={id}
-            value={task?.id}
+      <div className="grid grid-cols-1 md:grid-cols-4 place-content-between justify-between gap-4 mb-5">
+        {tasks?.map((task) => (
+          <Card
+            key={task?.id}
             title={task?.title}
-            description={task?.description}
-            date={new Intl.DateTimeFormat("default", {
+            description={new Intl.DateTimeFormat("default", {
               month: "short",
               day: "2-digit",
             }).format(new Date(task?.created_at!))}
-            collapsible
+            content={task?.description}
             btnTxt="Edit"
-            id={task?.id}
             icon="CheckCircle"
-            iconClr={task?.isCompleted ? "green" : "red"}
+            icnClr={task?.isCompleted ? "green" : "red"}
+            id={task?.id}
+            task={task}
           />
         ))}
       </div>
