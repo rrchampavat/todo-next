@@ -10,6 +10,7 @@ export async function getTasks() {
     if (error) {
       throw error;
     }
+
     if (data) {
       return {
         data: data,
@@ -23,6 +24,7 @@ export async function getTasks() {
 export const addTask = async (props: any) => {
   try {
     const { title, description } = props;
+
     const res = await supabase
       .from("tasks")
       .insert([
@@ -36,6 +38,7 @@ export const addTask = async (props: any) => {
     if (res.error) {
       throw res.error;
     }
+
     return {
       data: res.data,
     };

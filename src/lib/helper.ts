@@ -4,7 +4,7 @@ export const getAll = async (table: string) => {
   const res = await fetch(`${API_URL}/${table}`, {
     method: "GET",
     cache: "no-store",
-    next: { revalidate: 0, tags: ["collections"] },
+    next: { revalidate: 10, tags: ["collections"] },
   });
 
   const data = await res.json();
@@ -18,7 +18,7 @@ export const getSingle = async (params: GetByIdPayload) => {
   const res = await fetch(`${API_URL}/${table}/${id}`, {
     method: "GET",
     cache: "no-store",
-    next: { revalidate: 0, tags: ["collections"] },
+    next: { revalidate: 10, tags: ["collections"] },
   });
 
   const data = await res.json();
@@ -45,7 +45,7 @@ export const updateData = async (params: UpdatePayload) => {
       "Content-Type": "application/json",
     },
     cache: "no-store",
-    next: { revalidate: 0, tags: ["collections"] },
+    next: { revalidate: 10, tags: ["collections"] },
   });
 
   return res;
@@ -61,7 +61,7 @@ export const updateDataClient = async (params: UpdatePayload) => {
       "Content-Type": "application/json",
     },
     cache: "no-store",
-    next: { revalidate: 0, tags: ["collections"] },
+    next: { revalidate: 10, tags: ["collections"] },
   });
 
   return res;

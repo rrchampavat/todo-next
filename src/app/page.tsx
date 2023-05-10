@@ -1,10 +1,15 @@
 import Card from "@/components/ui/Card/Card";
 import { getAll } from "@/lib/helper";
+import { notFound } from "next/navigation";
 
 // export const revalidate = 0;
 
 export default async function Home() {
   const tasks: Task[] = await getAll("tasks");
+
+  if (!tasks?.length) {
+    notFound();
+  }
 
   return (
     <main>

@@ -4,11 +4,6 @@ interface Task {
   description: string;
   isCompleted: boolean;
   created_at: Date;
-  updated_at: Date;
-}
-
-interface Card {
-  task: Task;
 }
 
 interface ConfirmModal {
