@@ -1,11 +1,7 @@
 const API_URL = process.env.API_URL;
 
 export const getAll = async (table: string) => {
-  const res = await fetch(`${API_URL}/${table}`, {
-    method: "GET",
-    cache: "no-store",
-    next: { revalidate: 10, tags: ["collections"] },
-  });
+  const res = await fetch(`${API_URL}/${table}`, { cache: "no-cache" });
 
   const data = await res.json();
 
@@ -15,11 +11,7 @@ export const getAll = async (table: string) => {
 export const getSingle = async (params: GetByIdPayload) => {
   const { table, id } = params;
 
-  const res = await fetch(`${API_URL}/${table}/${id}`, {
-    method: "GET",
-    cache: "no-store",
-    next: { revalidate: 10, tags: ["collections"] },
-  });
+  const res = await fetch(`${API_URL}/${table}/${id}`, { cache: "no-cache" });
 
   const data = await res.json();
 
@@ -29,7 +21,7 @@ export const getSingle = async (params: GetByIdPayload) => {
 export const getSingleClient = async (params: GetByIdPayload) => {
   const { table, id } = params;
 
-  const res = await fetch(`/api/${table}/${id}`);
+  const res = await fetch(`/api/${table}/${id}`, { cache: "no-cache" });
 
   const data = await res.json();
   return data;
@@ -40,12 +32,11 @@ export const updateData = async (params: UpdatePayload) => {
 
   const res = await fetch(`${API_URL}/${table}/${id}`, {
     method: "PUT",
+    cache: "no-cache",
     body: JSON.stringify(body),
     headers: {
       "Content-Type": "application/json",
     },
-    cache: "no-store",
-    next: { revalidate: 10, tags: ["collections"] },
   });
 
   return res;
@@ -56,12 +47,11 @@ export const updateDataClient = async (params: UpdatePayload) => {
 
   const res = await fetch(`/api/${table}/${id}`, {
     method: "PUT",
+    cache: "no-cache",
     body: JSON.stringify(body),
     headers: {
       "Content-Type": "application/json",
     },
-    cache: "no-store",
-    next: { revalidate: 10, tags: ["collections"] },
   });
 
   return res;
