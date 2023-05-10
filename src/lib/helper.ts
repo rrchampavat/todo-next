@@ -2,7 +2,7 @@ const API_URL = process.env.API_URL;
 
 export const getAll = async (table: string) => {
   const res = await fetch(`${API_URL}/${table}`, { cache: "no-cache" });
-
+  //
   const data = await res.json();
 
   return data;
