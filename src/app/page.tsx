@@ -2,7 +2,8 @@ import Card from "@/components/ui/Card/Card";
 import { getAll } from "@/lib/helper";
 import { notFound } from "next/navigation";
 
-// export const revalidate = 0;
+export const revalidate = 0;
+// export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const tasks: Task[] = await getAll("tasks");
